@@ -1,5 +1,5 @@
-Flask
-numpy
-tensorflow
-nltk
-gunicorn==19.7.1
+Flask==1.1.2
+numpy==1.18.5
+tensorflow-cpu==2.2.0  # or tensorflow==2.2.0 if GPU support is required
+nltk==3.5
+gunicorn==19.9.0
