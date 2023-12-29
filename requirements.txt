@@ -2,3 +2,4 @@ Flask
 numpy
 tensorflow
 nltk
+gunicorn==19.7.1
