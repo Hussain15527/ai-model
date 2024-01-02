@@ -63,7 +63,7 @@ def bag_of_words(sentence, words):
 def predict_intent(sentence, model, words):
     bow = bag_of_words(sentence, words)
     res = model.predict(np.array([bow]))[0]
-    ERROR_THRESHOLD = 0.25
+    ERROR_THRESHOLD = 0.20
     results = [[i, r] for i, r in enumerate(res) if r > ERROR_THRESHOLD]
     results.sort(key=lambda x: x[1], reverse=True)
     return_list = []
@@ -72,6 +72,8 @@ def predict_intent(sentence, model, words):
     return return_list
 
 def get_response(intents_list, intents_json):
+    if len(intents_list)==0:
+        return "Please be more specific."
     tag = intents_list[0]['intent']
     list_of_intents = intents_json['intents']
     for i in list_of_intents:
@@ -79,6 +81,7 @@ def get_response(intents_list, intents_json):
             result = random.choice(i['responses'])
             break
     return result
+
 
 # Example usage
 # flask app
